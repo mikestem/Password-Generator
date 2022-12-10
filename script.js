@@ -9,12 +9,44 @@ function generatePassword(){
 
   numChar = prompt("Password must be between 8-128 characters. How many would you like?");
   if (numChar <8 || numChar > 128) {
-    alert "Please choose number between 8-128.";
+    return "Please choose number between 8-128.";
   } else if (isNaN(numChar)){
     numChar = prompt ("Enter a valid number");
   }
   else{
     alert("Password will be " + numChar + " characters long");
+  }
+
+  hasLowercase = confirm("Do you want lowercase letters?");
+  if (hasLowercase) {
+    alert("Password will have lowercase letters.");
+  }
+  else {
+    alert("Password will not have lowercase letters.");
+  }
+
+  hasCaps = confirm("Do you want CAPITAL letters?");
+  if (hasCaps){
+    alert("Password will have CAPITAL letters.");
+  }
+  else{
+    alert("Password will not have CAPITAL letters.");
+  }
+
+  hasNums = confirm("Do you want numbers?");
+  if (hasNums){
+    alert("Password will have numbers");
+  }
+  else{
+    alert("Password will not have numbers.");
+  }
+
+  hasSpec = confirm("Do you want special characters?");
+  if(hasSpec){
+    alert("Password will have special characters.");
+  }
+  else{
+    alert("Password will not have special characters");
   }
 }
 
