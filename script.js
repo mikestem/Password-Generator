@@ -47,9 +47,24 @@ function generatePassword(){
   }
   else{
     alert("Password will not have special characters");
-  }
+  };
+
+
+// selected options
+if(hasLowercase){
+  passwordResults = passwordResults.concat(lowerChar);
+}
+if(hasCaps){
+  passwordResults = passwordResults.concat(hasCaps);
+}
+if(hasNums){
+  passwordResults = passwordResults.concat(hasNums);
+}
+if(hasSpec){
+  passwordResults = passwordResults.concat(hasSpec);
 }
 
+};
 // // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
