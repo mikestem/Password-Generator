@@ -1,7 +1,10 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate")
+function generatePassword(){
+  var numChar = ["0", "1", "2", "3", "4", "5", "6", "7" , "8", "9"];
+}
 
-// Write password to the #password input
+// // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -10,5 +13,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
