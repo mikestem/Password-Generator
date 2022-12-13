@@ -1,20 +1,19 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate")
-function generatePassword(){
+function generatePassword() {
   var numChar = ["0", "1", "2", "3", "4", "5", "6", "7" , "8", "9"];
   var capsChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var lowerChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "[", "]", "{", "}", "<", ">", ";", ":", "?", "/", "."]
+  var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "[", "]", "{", "}", "<", ">", ";", ":", "?", "/", "."];
   var possChar = [];
 
-  numChar = prompt("Password must be between 8-128 characters. How many would you like?");
-  if (numChar <8 || numChar > 128) {
+  passwordLength = prompt("Password must be between 8-128 characters. How many would you like?");
+  if (passwordLength <8 || passwordLength > 128) {
     return "Please choose number between 8-128.";
-  } else if (isNaN(numChar)){
-    numChar = prompt ("Enter a valid number");
+  } else if (isNaN(passwordLength)){
+    passwordLength = prompt ("Enter a valid number");
   }
   else{
-    alert("Password will be " + numChar + " characters long");
+    alert("Password will be " + passwordLength + " characters long");
   }
 
   hasLowercase = confirm("Do you want lowercase letters?");
@@ -49,29 +48,36 @@ function generatePassword(){
     alert("Password will not have special characters");
   };
 
+  // selected options
+  if (hasLowercase) {
+    possChar = possChar.concat(lowerChar);
+  }
+  if (hasCaps) {
+    possChar = possChar.concat(hasCaps);
+  }
+  if (hasNums) {
+   possChar = possChar.concat(hasNums);
+  }
+  if (hasSpec) {
+   possChar = possChar.concat(hasSpec);
+  }
 
-// selected options
-if(hasLowercase){
-  passwordResults = passwordResults.concat(lowerChar);
-}
-if(hasCaps){
-  passwordResults = passwordResults.concat(hasCaps);
-}
-if(hasNums){
-  passwordResults = passwordResults.concat(hasNums);
-}
-if(hasSpec){
-  passwordResults = passwordResults.concat(hasSpec);
-}
-
+  // // declaration
+  let passwordResults = ""
+  for (let i = 0; i < passwordLength; i++) {
+    let rng =[Math.floor(Math.random() * possChar.length)];
+    passwordResults = passwordResults + possChar[rng];
+  }
+  return passwordResults;
 };
+
+var generateBtn = document.querySelector("#generate");
 // // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // // Add event listener to generate button
